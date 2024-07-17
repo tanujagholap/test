@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>DESCRIPTION</th>
+                <th>COMPLETED</th>
+                <th>CREATED_AT</th>
+                <th>UPDATED_AT</th>
+                <th colspan="2">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in form %}
+            <tr>
+                <td>{{ i.order_id }}</td>
+                <td>{{ i.title }}</td>
+                <td>{{ i.description }}</td>
+                <td>{{ i.completed }}</td>
+                <td>{{ i.created_at }}</td>
+                <td>{{ i.updated_at }}</td>
+                <td>
+                    <a href="{% url 'update' i.id %}">
+                        <button>UPDATE</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete' i.id %}">
+                        <button>DELETE</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</center>
+{% endblock %}
